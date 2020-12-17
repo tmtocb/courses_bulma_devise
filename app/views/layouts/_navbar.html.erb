@@ -14,12 +14,12 @@
         <div class="navbar-end">
           <div class="navbar-item">
           <div class="field is-grouped">
-            <p class="control">
-              <%= link_to new_course_path, class: "button is-danger is-inverted" do %>
-               <span class="icon"><i class="fas fa-plus-square"></i></span>
-               <% end %>
-            </p>
               <% if user_signed_in? %>
+                <p class="control">
+                  <%= link_to new_course_path, class: "button is-danger is-inverted" do %>
+                  <span class="icon"><i class="fas fa-plus-square"></i></span>
+                  <% end %>
+                </p>
                 <p class="control">
                   <%= link_to current_user.name, edit_user_registration_path, class: "button is-danger" %>
                 </p>
