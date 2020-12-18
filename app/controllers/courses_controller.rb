@@ -1,11 +1,11 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+
   # GET /courses
   # GET /courses.json
   def index
     if params[:title]
-      @courses = Course.where('title ILIKE ?', "%#{params[:title]}%")
+      @courses = Course.where('title ILIKE ?', "%#{params[:title]}%") #case-insensitive
     else
       @courses = Course.all
     end
@@ -29,6 +29,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
+    @course.user = current_user
 
     respond_to do |format|
       if @course.save
@@ -73,6 +74,6 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:title, :description, :user_id)
+      params.require(:course).permit(:title, :description)
     end
 end

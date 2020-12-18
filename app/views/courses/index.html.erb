@@ -1,13 +1,10 @@
-<div class="container">
-Courses: <%= @courses.count %>
+<h1>
+  Courses:
+  <%= @courses.count %>
+</h1>
+<div class="card-columns">
+  <% @courses.each do |course| %>
+    <%= render 'courses/course', course: course %>
+  <% end %>
 </div>
-
-<hr>
-
-<div class="container">
-<% @courses.each do |course| %>
-<%= render 'courses/course', course: course %>
-<% end %>
-</div>
-           
-
+<br/>
